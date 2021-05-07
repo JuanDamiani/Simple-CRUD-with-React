@@ -1,9 +1,20 @@
 import React from 'react';
-
+import {Link} from 'react-router-dom';
 
 export default function Home() {
   
   return (
-      <h1>funciona</h1>
+    <ul>
+    <li>
+        <Link to="/personas">Personas</Link>
+    </li>
+
+    <li>
+    <Link to="/categorias">Categorias</Link>
+    </li>
+    <li>
+    <Link to="/libros">Libros</Link>
+    </li>
+</ul>
   )
   }

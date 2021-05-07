@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-export default function AltaCategiria(props) {
+export default function AltaCategoria(props) {
     const [form, setForm] = React.useState({
         nombre: '',
     });
@@ -15,8 +15,8 @@ export default function AltaCategiria(props) {
 
     const guardar = async () => {
         // form
-        await axios.post('localhost:3000/api/categiria', form);
-        props.history.push('/categoria');
+        await axios.post('http://localhost:3000/api/categoria', form);
+        props.history.push('/categorias');
     };
 
     return (
