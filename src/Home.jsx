@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div className="container my-4">
       <div className="row">
-        <div className=" col-4">
+        <div className="col-12 col-sm-4 my-2">
           <div class="card">        
             <img src={imgPers} class="card-img-top" alt="..."/>
             <div class="card-body">
@@ -19,7 +19,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className=" col-4">
+        <div className="col-12 col-sm-4 my-2">
           <div class="card">        
             <img src={imgCat} class="card-img-top" alt="..."/>
             <div class="card-body">
@@ -29,7 +29,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className=" col-4">
+        <div className="col-12 col-sm-4 my-2">
           <div class="card">        
             <img src={imgLib} class="card-img-top" alt="..."/>
             <div class="card-body">
