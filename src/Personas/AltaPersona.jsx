@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 export default function AltaPersona(props) {
-   /* const [form, setForm] = React.useState({
+    const [form, setForm] = React.useState({
         nombre: '',
         apellido: '',
         alias: '',
@@ -59,9 +59,7 @@ export default function AltaPersona(props) {
             <br />
             <button onClick={guardar}>Guardar</button>
         </div>
-    );*/
-
-return (<h1>Esto es alta persona</h1>)
+    );
 
 
 

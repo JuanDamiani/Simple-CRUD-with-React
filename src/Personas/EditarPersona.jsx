@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 export default function EditarPersona(props) {
-   /* const params = useParams();
+   const params = useParams();
     const [form, setForm] = React.useState({
         nombre: '',
         apellido: '',
@@ -67,6 +67,5 @@ export default function EditarPersona(props) {
             <input type="text" name="email" placeholder="email" value={form.apellido} onChange={handleChangeEmail}/><br/>
             <button onClick={guardar}>Guardar</button>
         </div>
-    )*/
-    return (<h1>Esto es editar persona</h1>)
+    )
 }
