@@ -31,8 +31,8 @@ function App() {
       <Route exact path="/personas/agregar" component={AltaPersona} />
 
       <Route exact path="/categorias" component={ListadoCategoria} />
-      <Route exact path="categorias/editar/:id" component={EditarCategoria} />
-      <Route exact path="categorias/agregar" component={AltaCategoria} />
+      <Route exact path="/categorias/editar/:id" component={EditarCategoria} />
+      <Route exact path="/categorias/agregar" component={AltaCategoria} />
 
       <Route exact path="/libros" component={ListadoLibro} />
       <Route exact path="/libros/editar/:id" component={EditarLibro} />
