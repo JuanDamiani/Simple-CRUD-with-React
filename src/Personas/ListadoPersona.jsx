@@ -66,6 +66,8 @@ export default function ListadoPersona() {
                     ))}
                 </tbody>
             </table>
+             
+            <Link to="/" >Home</Link>
         </div>
     )
                     }
