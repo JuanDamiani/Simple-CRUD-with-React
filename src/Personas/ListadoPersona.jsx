@@ -38,36 +38,47 @@ export default function ListadoPersona() {
 
 
     return (
-        <div>
-            <Link to={"/personas/agregar"}>Agregar</Link>
-            {error ? <>Error en la conexión</> : <></>}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Alias</th>
-                        <th>Email</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {listado.map(unaPersona => (
+        <div className="container">
+            <div className="col-12">
+                <div className="col-12 d-flex flex-direction-row justify-content-between align-items-center my-4">
+                <h2>Listado de personas</h2>                
+                <Link to={"/personas/agregar"} className="btn btn-primary">Agregar</Link>
+                {error ? <>Error en la conexión</> : <></>}
+                </div>
+                <table className="table">
+                    <thead>
                         <tr>
-                            <td>{unaPersona.nombre}</td>
-                            <td>{unaPersona.apellido}</td>
-                            <td>{unaPersona.alias}</td>
-                            <td>{unaPersona.email}</td>
-                            <td>
-                                <Link to={"/personas/editar/"+ unaPersona.id.toString()}>Editar</Link> |&nbsp;
-                                <Link onClick={() => borrarPersona(unaPersona.id)}>Borrar</Link>
-                            </td>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Alias</th>
+                            <th>Email</th>
+                            <th></th>
                         </tr>
+<<<<<<< HEAD
                     ))}
                 </tbody>
             </table>
              
             <Link to="/" >Home</Link>
+=======
+                    </thead>
+                    <tbody>
+                        {listado.map(unaPersona => (
+                            <tr>
+                                <td>{unaPersona.nombre}</td>
+                                <td>{unaPersona.apellido}</td>
+                                <td>{unaPersona.alias}</td>
+                                <td>{unaPersona.email}</td>
+                                <td>
+                                    <Link to={"/personas/editar/"+ unaPersona.id.toString()}>Editar</Link> |&nbsp;
+                                    <Link onClick={() => borrarPersona(unaPersona.id)}>Borrar</Link>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+>>>>>>> gabrielmaza
         </div>
     )
                     }
