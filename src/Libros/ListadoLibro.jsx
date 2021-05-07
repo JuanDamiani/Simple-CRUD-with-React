@@ -38,34 +38,39 @@ export default function ListadoLibro() {
 
 
     return (
-        <div>
-            <Link to={"/libros/agregar"}>Agregar</Link>
-            {error ? <>Error en la conexión</> : <></>}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Id de la persona</th>
-                        <th>Id de la categoria</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {listado.map(unLibro => (
+        <div className="container">
+            <div className="col-12">
+                <div className="col-12 d-flex flex-direction-row justify-content-between align-items-center my-4">
+                    <h2>Listado de libros</h2>
+                    <Link to={"/libros/agregar"} className="btn btn-primary">Agregar</Link>
+                    {error ? <>Error en la conexión</> : <></>}
+                </div>
+                <table className="table">
+                    <thead>
                         <tr>
-                            <td>{unLibro.nombre}</td>
-                            <td>{unLibro.descripcion}</td>
-                            <td>{unLibro.persona_id}</td>
-                            <td>{unLibro.categoria_id}</td>
-                            <td>
-                                <Link to={"/libros/editar/"+ unLibro.id.toString()}>Editar</Link> |&nbsp;
-                                <Link onClick={() => borrarLibro(unLibro.id.toString())}>Borrar</Link>
-                            </td>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Id de la persona</th>
+                            <th>Id de la categoria</th>
+                            <th></th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {listado.map(unLibro => (
+                            <tr>
+                                <td>{unLibro.nombre}</td>
+                                <td>{unLibro.descripcion}</td>
+                                <td>{unLibro.persona_id}</td>
+                                <td>{unLibro.categoria_id}</td>
+                                <td>
+                                    <Link to={"/libros/editar/"+ unLibro.id.toString()}>Editar</Link> |&nbsp;
+                                    <Link onClick={() => borrarLibro(unLibro.id.toString())}>Borrar</Link>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
                     }

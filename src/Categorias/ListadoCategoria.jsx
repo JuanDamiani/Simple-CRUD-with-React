@@ -36,10 +36,15 @@ export default function ListadoCategoria() {
 
 
     return (
-        <div>
-            <Link to={"/categorias/agregar"}>Agregar</Link>
-            {error ? <>Error en la conexión</> : <></>}
-            <table>
+        <div className="container">
+            <div className="col-12">
+                <div className="col-12 d-flex flex-direction-row justify-content-between align-items-center my-4">
+                    <h2>Listado de categorías</h2>
+                    <Link to={"/categorias/agregar"} className="btn btn-primary">Agregar</Link>
+                    {error ? <>Error en la conexión</> : <></>}
+                </div>
+            </div>
+            <table className="table">
                 <thead>
                     <tr>
                         <th>Nombre</th>
