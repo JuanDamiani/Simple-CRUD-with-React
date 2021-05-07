@@ -54,13 +54,7 @@ export default function ListadoLibro() {
                             <th>Id de la categoria</th>
                             <th></th>
                         </tr>
-<<<<<<< HEAD
-                    ))}
-                </tbody>
-            </table>
-            <Link to="/" >Home</Link>
-=======
-                    </thead>
+                     </thead>
                     <tbody>
                         {listado.map(unLibro => (
                             <tr>
@@ -77,7 +71,6 @@ export default function ListadoLibro() {
                     </tbody>
                 </table>
             </div>
->>>>>>> gabrielmaza
         </div>
     )
                     }

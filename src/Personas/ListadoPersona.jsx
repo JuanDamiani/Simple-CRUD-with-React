@@ -54,13 +54,11 @@ export default function ListadoPersona() {
                             <th>Email</th>
                             <th></th>
                         </tr>
-<<<<<<< HEAD
                     ))}
                 </tbody>
             </table>
              
             <Link to="/" >Home</Link>
-=======
                     </thead>
                     <tbody>
                         {listado.map(unaPersona => (
@@ -78,7 +76,6 @@ export default function ListadoPersona() {
                     </tbody>
                 </table>
             </div>
->>>>>>> gabrielmaza
         </div>
     )
                     }

@@ -7,7 +7,6 @@ import EditarPersona from './Personas/EditarPersona';
 import ListadoPersona from './Personas/ListadoPersona';
 
 import AltaCategoria from './Categorias/AltaCategoria';
-import EditarCategoria from './Categorias/EditarCategoria';
 import ListadoCategoria from './Categorias/ListadoCategoria';
 
 import AltaLibro from './Libros/AltaLibro';
@@ -25,7 +24,7 @@ function App() {
       <Route exact path="/personas/agregar" component={AltaPersona} />
 
       <Route exact path="/categorias" component={ListadoCategoria} />
-      <Route exact path="/categorias/editar/:id" component={EditarCategoria} />
+  
       <Route exact path="/categorias/agregar" component={AltaCategoria} />
 
       <Route exact path="/libros" component={ListadoLibro} />

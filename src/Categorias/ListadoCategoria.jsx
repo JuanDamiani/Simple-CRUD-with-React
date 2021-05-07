@@ -56,7 +56,7 @@ export default function ListadoCategoria() {
                         <tr>
                             <td>{unaCategoria.nombre}</td>
                             <td>
-                                <Link to={"/categorias/editar/"+unaCategoria.id.toString()}>Editar</Link> |&nbsp;
+                            
                                 <Link onClick={() => borrarCategoria(unaCategoria.id)}>Borrar</Link>
                             </td>
                         </tr>
