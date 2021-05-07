@@ -10,7 +10,7 @@ export default function EditarCategoria(props) {
 
     const buscarCategoriaPorId = async(idCategoria) => {
         try {
-            const respuesta = await axios.get('http://localhost:3000/api/persona/'+idCategoria.toString());
+            const respuesta = await axios.get('http://localhost:3000/api/categoria/'+idCategoria);
             setForm(respuesta.data);
         } catch(e) {
             console.log(e.message);

@@ -15,8 +15,14 @@ export default function AltaCategoria(props) {
 
     const guardar = async () => {
         // form
+        try {
         await axios.post('http://localhost:3000/api/categoria', form);
         props.history.push('/categorias');
+        }
+        catch(e){
+            console.log(e);
+            
+        }
     };
 
     return (
