@@ -14,12 +14,6 @@ import AltaLibro from './Libros/AltaLibro';
 import EditarLibro from './Libros/EditarLibro';
 import ListadoLibro from './Libros/ListadoLibro';
 
-
-
-
-
-
-
 function App() {
   return (
     <div className="App">
@@ -44,3 +38,10 @@ function App() {
 }
 
 export default App;
+
+// No funcan
+// -Personas editar 
+// -Categoría editar
+// - Libros agregar (funciona pero por como esta hecho el server no agrega si no existe el id de la categoría o el de la persona)
+// -Libros editar 
+// - Libros borrar (seguramente no borra poque el server no deja borrar un libro que este prestado a una persona)
