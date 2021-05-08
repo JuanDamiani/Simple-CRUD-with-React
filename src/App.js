@@ -40,7 +40,6 @@ function App() {
 export default App;
 
 // No funcan
-// -Personas editar 
 // -Categoría editar
 // - Libros agregar (funciona pero por como esta hecho el server no agrega si no existe el id de la categoría o el de la persona)
 // -Libros editar 
