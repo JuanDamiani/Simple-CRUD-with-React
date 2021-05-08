@@ -13,7 +13,7 @@ export default function EditarPersona(props) {
 
     const buscarPersonaPorId = async(idPersona) => {
         try {
-            const respuesta = await axios.get('localhost:3000/api/persona/'+idPersona);
+            const respuesta = await axios.get('http://localhost:3000/api/persona/'+idPersona);
             setForm(respuesta.data);
         } catch(e) {
         console.log(e.message);

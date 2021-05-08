@@ -48,6 +48,7 @@ export default function ListadoPersona() {
                 <table className="table">
                     <thead>
                         <tr>
+                            <th>id</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Alias</th>
@@ -59,6 +60,7 @@ export default function ListadoPersona() {
                     <tbody>
                         {listado.map(unaPersona => (
                             <tr>
+                                <td>{unaPersona.id}</td>
                                 <td>{unaPersona.nombre}</td>
                                 <td>{unaPersona.apellido}</td>
                                 <td>{unaPersona.alias}</td>
