@@ -2,12 +2,40 @@ import React from 'react';
 import axios from 'axios';
 
 export default function AltaLibro(props) {
+    const [categorias, setCategorias] = React.useState([]);
+    const [personas, setPersonas] = React.useState([]);
     const [form, setForm] = React.useState(
         {nombre:"", 
         descripcion:"", 
-        categoria_id: 0, 
-        persona_id: 0
-    } );
+        categoria_id: "", 
+        persona_id: "",
+    });
+
+    const obtenerCategorias = async () => {
+        try {
+            const respuesta = await axios.get('http://localhost:3000/api/categoria').
+            then((respuesta) => setCategorias(respuesta.data)) 
+        } catch (e) {
+            console.log(e.message)
+        }
+    };
+
+    const obtenerPersonas = async () => {
+        try {
+            const respuesta = await axios.get('http://localhost:3000/api/persona').
+            then((respuesta) => setPersonas(respuesta.data))
+        } catch (e) {
+            console.log(e.message)
+        }
+    };
+
+    React.useEffect(() => {
+        obtenerCategorias();
+    }, []);
+
+    React.useEffect(() => {
+        obtenerPersonas();
+    }, []);
 
     const handleChangeNombre = e => {
         // e.target.value
@@ -37,15 +65,6 @@ export default function AltaLibro(props) {
         setForm(nuevoState);
     };
   
-   /* const guardar = async () => {
-        // form
-        try {
-        await axios.post('http://localhost:3000/api/libro', form);
-        props.history.push('/libros');}
-        catch(e) {
-            console.log(e);
-        }
-        */
     const guardar = async () => {
         // form
         try {
@@ -77,13 +96,27 @@ export default function AltaLibro(props) {
                                 <input type="text" name="descripcion" placeholder="descripcion" value={form.descripcion} onChange={handleChangeDescripcion} id="input2" className="form-control"/>
                             </div>
                             <div className="col-12">
-                                <label htmlFor="input3" className="form-label mt-3">ID categoría</label>
-                                <input type= "text"  name="categoria_id" placeholder="categoria_id" value={form.categoria_id} onChange={handleChangeCategoria_id} id="input3" className="form-control"/>
+                                <label htmlFor="input3" className="form-label mt-3">Categoría</label>
+                                <select name="categoria_id" id="input3" onChange={handleChangeCategoria_id} className="form-select">
+                                    <option selected>Seleccione una categoría</option>
+                                    {categorias.map(unaCategoria => (
+                                        <option value={unaCategoria.id}>
+                                            {unaCategoria.nombre}
+                                        </option>
+                                    ))}
+                                </select>                                                                
                             </div>
                             <div className="col-12">
-                                <label htmlFor="input4" className="form-label mt-3">ID de persona</label>
-                                <input type= "text"  name="persona_id" placeholder="persona_id" value={form.persona_id} onChange={handleChangePersona_id} id="input4" className="form-control"/>
-                            </div>
+                                <label htmlFor="input4" className="form-label mt-3">Persona</label>
+                                <select name="persona_id" id="input4" onChange={handleChangePersona_id} className="form-select">
+                                    <option selected>Seleccione una persona</option>
+                                    {personas.map(unaPersona => (
+                                        <option value={unaPersona.id}>
+                                            {unaPersona.nombre}
+                                        </option>
+                                    ))}
+                                </select>                                                                
+                            </div>                        
                         </form>
                         <button onClick={guardar} className="btn btn-primary mt-4">Guardar</button>
                     </div>
