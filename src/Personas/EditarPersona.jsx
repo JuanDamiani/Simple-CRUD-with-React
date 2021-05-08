@@ -8,13 +8,15 @@ export default function EditarPersona(props) {
         nombre: '',
         apellido: '',
         alias:'',
-        email:''
+        // email:''
     })
+
+    //then((response) => setForm({nombre: response.data.nombre, apellido: response.data.apellido, alias: response.data.alias}))
 
     const buscarPersonaPorId = async(idPersona) => {
         try {
-            const respuesta = await axios.get('localhost:3000/api/personas/'+idPersona);
-            setForm(respuesta.data);
+            const respuesta = await axios.get('http://localhost:3000/api/persona/'+idPersona).
+            then((response) => setForm({nombre: response.data.nombre, apellido: response.data.apellido, alias: response.data.alias}))
         } catch(e) {
         console.log(e.message);
         }
@@ -46,16 +48,17 @@ export default function EditarPersona(props) {
         setForm(nuevoState);
     }
     
-    const handleChangeEmail = (e) => {
-        // e.target.value
-        const nuevoState = JSON.parse(JSON.stringify(form));
-        nuevoState.email = e.target.value;
-        setForm(nuevoState);
-    }
+    // const handleChangeEmail = (e) => {
+    //     // e.target.value
+    //     const nuevoState = JSON.parse(JSON.stringify(form));
+    //     nuevoState.email = e.target.value;
+    //     setForm(nuevoState);
+    // }
+
     const guardar = async() => {
         // form
          try{
-        await axios.put('http://localhost:3000/api/persona'+ params.id, form);
+        await axios.put('http://localhost:3000/api/persona/'+ params.id, form);
         props.history.push('/personas');
          }
          catch(e) {
@@ -69,7 +72,7 @@ export default function EditarPersona(props) {
             <input type="text" name="nombre" placeholder="nombre" value={form.nombre} onChange={handleChangeNombre}/><br/>
             <input type="text" name="apellido" placeholder="apellido" value={form.apellido} onChange={handleChangeApellido}/><br/>
             <input type="text" name="alias" placeholder="alias" value={form.alias} onChange={handleChangeAlias}/><br/>
-            <input type="text" name="email" placeholder="email" value={form.email} onChange={handleChangeEmail}/><br/>
+            {/* <input type="text" name="email" placeholder="email" value={form.email} onChange={handleChangeEmail}/><br/> */}
             <button onClick={guardar}>Guardar</button>
         </div>
     )

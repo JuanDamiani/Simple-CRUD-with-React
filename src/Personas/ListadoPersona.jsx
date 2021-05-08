@@ -64,7 +64,7 @@ export default function ListadoPersona() {
                                 <td>{unaPersona.alias}</td>
                                 <td>{unaPersona.email}</td>
                                 <td>
-                                    <Link to={"/personas/editar/"+ unaPersona.id.toString()}>Editar</Link> |&nbsp;
+                                    <Link to={"/personas/editar/"+unaPersona.id.toString()}>Editar</Link> |&nbsp;
                                     <Link onClick={() => borrarPersona(unaPersona.id)}>Borrar</Link>
                                 </td>
                             </tr>
