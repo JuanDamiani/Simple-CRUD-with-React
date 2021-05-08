@@ -91,39 +91,8 @@ export default function EditarPersona(props) {
                         </form>
                         <button onClick={guardar} className="btn btn-primary mt-4">Guardar</button>
                     </div>
-
-                    {/* <input type="text" name="email" placeholder="email" value={form.email} onChange={handleChangeEmail}/><br/> */}
                 </div>
             </div>
         </div>
-
-
-        // <div className="container">
-        // <div className="col-12">
-        //     <div className="col-12 d-flex flex-direction-row justify-content-between align-items-center my-4">
-        //         <h2>Editar persona</h2>                            
-        //     </div>
-        //     <div className="col-8 mx-auto">
-        //         <form className="row m-4 p-3 bg-light">
-        //             <div className="col-12">
-        //                 <label htmlFor="input1" className="form-label mt-3">Nombre</label>
-        //                 <input type="text" name="nombre" placeholder="Ingresar nombre" value={form.nombre} onChange={handleChangeNombre} id="input1" className="form-control"/>
-        //             </div>
-        //             <div className="col-12">
-        //                 <label htmlFor="input2" className="form-label mt-3">Apellido</label>                    
-        //                 <input type="text" name="apellido" placeholder="apellido" value={form.apellido} onChange={handleChangeApellido} id="input2" className="form-control"/>
-        //             </div>
-        //             <div className="col-12">
-        //                 <label htmlFor="input3" className="form-label mt-3">Alias</label>
-        //                 <input type="text" name="alias" placeholder="alias" value={form.alias} onChange={handleChangeAlias} id="input3" className="form-control"/>
-        //             </div>
-        //             <div className="col-12">
-        //                 <button onClick={guardar} className="btn btn-primary mt-3">Guardar</button>
-        //             </div>
-        //         </form>
-        //         {/* <input type="text" name="email" placeholder="email" value={form.email} onChange={handleChangeEmail}/><br/> */}
-        //     </div>
-        // </div>
-        // </div>
     )
 }
