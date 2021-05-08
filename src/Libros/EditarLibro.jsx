@@ -5,19 +5,18 @@ import axios from 'axios';
 export default function EditarLibro(props) {
    const params = useParams();
     const [form, setForm] = React.useState({
-        nombre:"", 
-        descripcion:"", 
-        categoria_id:"", 
-        persona_id:""
+        nombre: '', 
+        descripcion: '', 
+        categoria_id: '', 
+        persona_id: '',
     })
 
     const buscarLibroPorId = async(idLibro) => {
         try {
-            const respuesta = await axios.get('http://localhost:3000/api/libro/'+idLibro);
-            setForm(respuesta.data);
+            const respuesta = await axios.get('http://localhost:3000/api/libro/'+idLibro).
+            then((response) => setForm({nombre: response.data.nombre, descripcion: response.data.descripcion, categoria_id: response.data.categoria_id, persona_id: response.data.persona_id}))
         } catch(e) {
-            console.log(e);
-
+            console.log(e.message);
         }
     }
 
@@ -55,8 +54,13 @@ export default function EditarLibro(props) {
     }
     const guardar = async() => {
         // form 
-        await axios.put('http:/localhost:3000/api/libro/'+params.id, form);
-        props.history.push('/libros');
+        try {
+            await axios.put('http:/localhost:3000/api/libro/'+ params.id, form);
+            props.history.push('/libros');
+            
+        } catch (e) {
+            console.log(e.message);
+        }
     }
 
 
