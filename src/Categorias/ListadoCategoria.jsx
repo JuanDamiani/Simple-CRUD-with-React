@@ -48,6 +48,7 @@ export default function ListadoCategoria() {
                 <thead>
                     <tr>
                         <th>Nombre</th>
+                        <th>Id</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -55,10 +56,12 @@ export default function ListadoCategoria() {
                     {listado.map(unaCategoria => (
                         <tr>
                             <td>{unaCategoria.nombre}</td>
+                            <td>{unaCategoria.id}</td>
                             <td>
                             
                                 <Link onClick={() => borrarCategoria(unaCategoria.id)}>Borrar</Link>
                             </td>
+                            
                         </tr>
                     ))}
                 </tbody>
