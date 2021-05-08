@@ -42,7 +42,7 @@ export default function AltaPersona(props) {
         await axios.post('http://localhost:3000/api/persona', form);
         props.history.push('/personas');}
         catch(e) {
-            console.log(e);
+            console.log(e.response.data);  
         }
      };
 

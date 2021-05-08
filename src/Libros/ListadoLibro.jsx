@@ -31,7 +31,7 @@ export default function ListadoLibro() {
             await axios.delete('http://localhost:3000/api/libro/' + idLibroABorrar.toString());
             traerLibros();
         } catch(e) {
-            console.log(e.message)
+            console.log(e.response.data);  
 
         }
     }

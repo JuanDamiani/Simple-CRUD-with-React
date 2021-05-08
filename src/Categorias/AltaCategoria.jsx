@@ -20,7 +20,7 @@ export default function AltaCategoria(props) {
         props.history.push('/categorias');
         }
         catch(e){
-            console.log(e);
+            console.log(e.response.data);  
             
         }
     };

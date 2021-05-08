@@ -16,7 +16,7 @@ export default function EditarLibro(props) {
             const respuesta = await axios.get('http://localhost:3000/api/libro/'+idLibro);
             setForm(respuesta.data);
         } catch(e) {
-            console.log(e);
+            console.log(e.response.data);  
 
         }
     }
