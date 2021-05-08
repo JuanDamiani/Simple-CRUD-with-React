@@ -62,13 +62,10 @@ export default function AltaLibro(props) {
 
     return (
         <div>
-            <input type="text" name="nombre" placeholder="nombre" value={form.nombre} onChange={handleChangeNombre} />
+            <input type="text" name="nombre" placeholder="nombre" value={form.nombre} onChange={handleChangeNombre} /><br/>
             <input type="text" name="descripcion" placeholder="descripcion" value={form.descripcion} onChange={handleChangeDescripcion}/><br/>
             <input type= "number"  name="categoria_id" placeholder="categoria_id" value={form.categoria_id} onChange={handleChangeCategoria_id}/><br/>
             <input type= "number"  name="persona_id" placeholder="persona_id" value={form.persona_id} onChange={handleChangePersona_id}/><br/>
-            <br />
-           
-            <br />
             <button onClick={guardar}>Guardar</button>
         </div>
     );
