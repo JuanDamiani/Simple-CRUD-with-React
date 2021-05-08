@@ -30,9 +30,12 @@ export default function ListadoPersona() {
         try {
             await axios.delete('http://localhost:3000/api/persona/' + idPersonaABorrar.toString());
             traerPersonas();
+                
         } catch(e) {
-            console.log(e.message)
-
+            console.log(e.response.data);  
+            
+            
+        
         }
     }
 
