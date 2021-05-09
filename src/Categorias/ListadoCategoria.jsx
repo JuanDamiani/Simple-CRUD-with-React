@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function ListadoCategoria() {
 
@@ -13,10 +15,10 @@ export default function ListadoCategoria() {
             setListado(respuesta.data);
             setError('');
         } catch(e) {
-            if (e.message=='Network error') {
-                setError('No me pude conectar con el servidor');
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
             } else {
-                setError('Otro mensaje que venga del server');
+                toast.error(e.message);
             }
         }
     }
@@ -30,18 +32,22 @@ export default function ListadoCategoria() {
             await axios.delete('http://localhost:3000/api/categoria/' + idCategoriaABorrar)
             traerCategorias();
         } catch(e) {
-           console.log(e.message)
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
+            } else {
+                toast.error("No puedes eliminar esta categoría");
+            }
         }
     }
 
 
     return (
         <div className="container">
+            <ToastContainer />
             <div className="col-12">
                 <div className="col-12 d-flex flex-direction-row justify-content-between align-items-center my-4">
                     <h2>Listado de categorías</h2>
                     <Link to={"/categorias/agregar"} className="btn btn-primary">Agregar</Link>
-                    {error ? <>Error en la conexión</> : <></>}
                 </div>
             </div>
             <table className="table">

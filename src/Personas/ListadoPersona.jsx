@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // falta Se tiene que poder ver los libros que tiene una persona prestados (es decir, los libros que le preste)
 export default function ListadoPersona() {
 
@@ -11,14 +13,12 @@ export default function ListadoPersona() {
         try {
             const respuesta = await axios.get('http://localhost:3000/api/persona');
             setListado(respuesta.data);
-            setError('');
         } catch(e) {
-            if (e.message === 'Network error') {
-                setError('No me pude conectar con el servidor');
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
             } else {
-                setError('Otro mensaje que venga del server');
+                toast.error(e.message);
             }
-            console.log(error);
         }
     }
 
@@ -29,21 +29,20 @@ export default function ListadoPersona() {
     const borrarPersona = async(idPersonaABorrar) => {
         try {
             await axios.delete('http://localhost:3000/api/persona/' + idPersonaABorrar.toString());
+            toast.success("Realizado!")
             traerPersonas();
         } catch(e) {
-            console.log(e.message)
-
+            toast.error(e.message)
         }
     }
 
-
     return (
         <div className="container">
+            <ToastContainer />
             <div className="col-12">
                 <div className="col-12 d-flex flex-direction-row justify-content-between align-items-center my-4">
                 <h2>Listado de personas</h2>                
-                <Link to={"/personas/agregar"} className="btn btn-primary">Agregar</Link>
-                {error ? <>Error en la conexión</> : <></>}
+                <Link to={"/personas/agregar"} className="btn btn-primary">Agregar</Link>                
                 </div>
                 <table className="table">
                     <thead>
@@ -64,7 +63,7 @@ export default function ListadoPersona() {
                                 <td>{unaPersona.alias}</td>
                                 <td>{unaPersona.email}</td>
                                 <td>
-                                    <Link to={"/personas/editar/"+ unaPersona.id.toString()}>Editar</Link> |&nbsp;
+                                    <Link to={"/personas/editar/"+unaPersona.id.toString()}>Editar</Link> |&nbsp;
                                     <Link onClick={() => borrarPersona(unaPersona.id)}>Borrar</Link>
                                 </td>
                             </tr>
