@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function AltaLibro(props) {
     const [categorias, setCategorias] = React.useState([]);
@@ -16,7 +18,11 @@ export default function AltaLibro(props) {
             const respuesta = await axios.get('http://localhost:3000/api/categoria').
             then((respuesta) => setCategorias(respuesta.data)) 
         } catch (e) {
-            console.log(e.message)
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
+            } else {
+                toast.error(e.message);
+            }
         }
     };
 
@@ -25,7 +31,11 @@ export default function AltaLibro(props) {
             const respuesta = await axios.get('http://localhost:3000/api/persona').
             then((respuesta) => setPersonas(respuesta.data))
         } catch (e) {
-            console.log(e.message)
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
+            } else {
+                toast.error(e.message);
+            }
         }
     };
 
@@ -71,15 +81,18 @@ export default function AltaLibro(props) {
         await axios.post('http://localhost:3000/api/libro', form);
         props.history.push('/libros');}
         catch(e) {
-            console.log(e.message);
-            alert( "Es posible que no exista esa persona y/o esa categoria.");
-            props.history.push('/libros');
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
+            } else {
+                toast.error(e.message);
+            }
         }
 
     }
 
     return (
         <div className="container">
+            <ToastContainer />
             <div className="col-12">
                 <div className="col-12 d-flex flex-direction-row justify-content-between align-items-center my-4">
                     <h2>Agregar nuevo libro</h2>

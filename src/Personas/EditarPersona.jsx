@@ -1,6 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function EditarPersona(props) {
    const params = useParams();
@@ -8,17 +10,18 @@ export default function EditarPersona(props) {
         nombre: '',
         apellido: '',
         alias:'',
-        // email:''
     })
-
-    //then((response) => setForm({nombre: response.data.nombre, apellido: response.data.apellido, alias: response.data.alias}))
 
     const buscarPersonaPorId = async(idPersona) => {
         try {
             const respuesta = await axios.get('http://localhost:3000/api/persona/'+idPersona).
             then((response) => setForm({nombre: response.data.nombre, apellido: response.data.apellido, alias: response.data.alias}))
         } catch(e) {
-        console.log(e.message);
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
+            } else {
+                toast.error(e.message);
+            }
         }
     }
 
@@ -28,47 +31,37 @@ export default function EditarPersona(props) {
     }, [params])
 
     const handleChangeNombre = (e) => {
-        // e.target.value
         const nuevoState = JSON.parse(JSON.stringify(form));
         nuevoState.nombre = e.target.value;
         setForm(nuevoState);
     }
 
     const handleChangeApellido = (e) => {
-        // e.target.value
         const nuevoState = JSON.parse(JSON.stringify(form));
         nuevoState.apellido = e.target.value;
         setForm(nuevoState);
     }
 
     const handleChangeAlias = (e) => {
-        // e.target.value
         const nuevoState = JSON.parse(JSON.stringify(form));
         nuevoState.alias = e.target.value;
         setForm(nuevoState);
     }
     
-    // const handleChangeEmail = (e) => {
-    //     // e.target.value
-    //     const nuevoState = JSON.parse(JSON.stringify(form));
-    //     nuevoState.email = e.target.value;
-    //     setForm(nuevoState);
-    // }
-
     const guardar = async() => {
-        // form
          try{
             await axios.put('http://localhost:3000/api/persona/'+ params.id, form);
             props.history.push('/personas');
         }
          catch(e) {
-            console.log(e.message);
+            toast.error(e.message)
         }
     }
 
 
     return (
         <div className="container"> 
+            <ToastContainer />
             <div className="col-12">
                 <div className="col-12 d-flex flex-direction-row justify-content-between align-items-center my-4">
                     <h2>Editar persona</h2>

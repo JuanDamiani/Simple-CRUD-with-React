@@ -1,7 +1,9 @@
 import React from 'react'
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-// falta Se tiene que poder ver los libros que tiene una persona prestados (es decir, los libros que le preste)
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function ListadoLibro() {
 
     const [listado, setListado] = React.useState([]);
@@ -13,12 +15,11 @@ export default function ListadoLibro() {
             setListado(respuesta.data);
             setError('');
         } catch(e) {
-            if (e.message === 'Network error') {
-                setError('No me pude conectar con el servidor');
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
             } else {
-                setError('Otro mensaje que venga del server');
+                toast.error(e.message);
             }
-            console.log(error);
         }
     }
 
@@ -29,21 +30,25 @@ export default function ListadoLibro() {
     const borrarLibro = async(idLibroABorrar) => {
         try {
             await axios.delete('http://localhost:3000/api/libro/' + idLibroABorrar.toString());
+            toast.success("Realizado!")
             traerLibros();
         } catch(e) {
-            console.log(e.message)
-
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
+            } else {
+                toast.error(e.message);
+            }
         }
     }
 
 
     return (
         <div className="container">
+            <ToastContainer />
             <div className="col-12">
                 <div className="col-12 d-flex flex-direction-row justify-content-between align-items-center my-4">
                     <h2>Listado de libros</h2>
                     <Link to={"/libros/agregar"} className="btn btn-primary">Agregar</Link>
-                    {error ? <>Error en la conexión</> : <></>}
                 </div>
                 <table className="table">
                     <thead>

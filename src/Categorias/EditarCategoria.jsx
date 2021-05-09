@@ -1,6 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function EditarCategoria(props) {
    const params = useParams();
@@ -13,7 +15,11 @@ export default function EditarCategoria(props) {
             const respuesta = await axios.get('http://localhost:3000/api/categoria/'+idCategoria);
             setForm(respuesta.data);
         } catch(e) {
-            console.log(e.message);
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
+            } else {
+                toast.error(e.message);
+            }
         }
     }
 
@@ -23,21 +29,29 @@ export default function EditarCategoria(props) {
     }, [params])
 
     const handleChangeNombre = (e) => {
-        // e.target.value
         const nuevoState = JSON.parse(JSON.stringify(form));
         nuevoState.nombre = e.target.value;
         setForm(nuevoState);
     }
 
     const guardar = async() => {
-        // form 
-        await axios.put('http://localhost:3000/api/categoria/'+params.id, form);
-        props.history.push('/categorias');
+        try {
+            await axios.put('http://localhost:3000/api/categoria/'+params.id, form);
+            props.history.push('/categorias');
+            
+        } catch (e) {
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
+            } else {
+                toast.error(e.message);
+            }
+        }
     }
 
 
     return (
         <div className="container">
+            <ToastContainer />
             <div className="col-12">
                 <div className="col-12 d-flex flex-direction-row justify-content-between align-items-center my-4">
                     <h2>Editar categoría</h2>

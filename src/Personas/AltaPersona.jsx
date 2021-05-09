@@ -1,5 +1,7 @@
 import React from 'react';
-import axios from 'axios';
+import axios from 'axios'; 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function AltaPersona(props) {
 
@@ -44,12 +46,17 @@ export default function AltaPersona(props) {
         await axios.post('http://localhost:3000/api/persona', form);
         props.history.push('/personas');}
         catch(e) {
-            console.log(e);
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
+            } else {
+                toast.error(e.message);
+            }
         }
      };
 
     return (
         <div className="container"> 
+            <ToastContainer />
             <div className="col-12">
                 <div className="col-12 d-flex flex-direction-row justify-content-between align-items-center my-4">
                     <h2>Agregar nueva persona</h2>
