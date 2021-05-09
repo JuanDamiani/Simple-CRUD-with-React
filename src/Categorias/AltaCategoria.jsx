@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function AltaCategoria(props) {
     const [form, setForm] = React.useState({
@@ -20,13 +22,17 @@ export default function AltaCategoria(props) {
         props.history.push('/categorias');
         }
         catch(e){
-            console.log(e);
-            
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
+            } else {
+                toast.error(e.message);
+            }
         }
     };
 
     return (
         <div className="container">
+            <ToastContainer />
             <div className="col-12">
                 <div className="col-12 d-flex flex-direction-row justify-content-between align-items-center my-4">
                     <h2>Agregar nueva categoría</h2>
