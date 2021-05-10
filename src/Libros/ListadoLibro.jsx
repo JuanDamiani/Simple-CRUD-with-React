@@ -160,10 +160,12 @@ export default function ListadoLibro() {
                                    
                                 </td>
                                 <td>
+
                                     <Link to={"/libros/editar/"+ unLibro.id.toString()}>Editar</Link> |&nbsp;
                                     <Link onClick={() => borrarLibro(unLibro.id.toString())}>Borrar</Link>
                                     
                                     
+
                                 </td>
                             </tr>
                         ))}
