@@ -82,7 +82,7 @@ export default function ListadoCategoria() {
                     ))}
                 </tbody>
             </table>
-            <Link to="/" >Home</Link>
+           
         </div>
         
     )
