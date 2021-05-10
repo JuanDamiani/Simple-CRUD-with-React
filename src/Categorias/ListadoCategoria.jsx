@@ -69,7 +69,6 @@ export default function ListadoCategoria() {
                     ))}
                 </tbody>
             </table>
-           
         </div>
         
     )

@@ -74,7 +74,7 @@ export default function ListadoPersona() {
                     </tbody>
                 </table>
             </div>
-         
+
         </div>
     )
                     }

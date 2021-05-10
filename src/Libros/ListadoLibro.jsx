@@ -172,7 +172,7 @@ export default function ListadoLibro() {
                     </tbody>
                 </table>
             </div>
-          
+
         </div>
     )
                     }
