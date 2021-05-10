@@ -6,9 +6,80 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function ListadoLibro() {
     
+    const [categorias, setCategorias] = React.useState([]);
+    const [personas, setPersonas] = React.useState([]);
     const [listado, setListado] = React.useState([]);
     const [error, setError] = React.useState('');
  
+   
+        const [form, setForm] = React.useState(
+            {nombre:"", 
+            descripcion:"", 
+            categoria_id: "", 
+            persona_id: "",
+        });
+
+    const obtenerCategorias = async () => {
+        try {
+            const respuesta = await axios.get('http://localhost:3000/api/categoria').
+            then((respuesta) => setCategorias(respuesta.data)) 
+        } catch (e) {
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
+            } else {
+                toast.error(e.response.data.message);
+            }
+        }
+    };
+
+    const obtenerPersonas = async () => {
+        try {
+            const respuesta = await axios.get('http://localhost:3000/api/persona').
+            then((respuesta) => setPersonas(respuesta.data))
+        } catch (e) {
+            if (e.message === 'Network Error') {
+                toast.error("No me pude conectar con el servidor");
+            } else {
+                toast.error(e.response.data.message);
+            }
+        }
+    };
+
+    React.useEffect(() => {
+        obtenerCategorias();
+    }, []);
+
+    React.useEffect(() => {
+        obtenerPersonas();
+    }, []);
+
+    const handleChangeNombre = e => {
+        // e.target.value
+        const nuevoState = JSON.parse(JSON.stringify(form));
+        nuevoState.nombre = e.target.value;
+        setForm(nuevoState);
+    };
+
+    const handleChangeDescripcion = e => {
+        // e.target.value
+        const nuevoState = JSON.parse(JSON.stringify(form));
+        nuevoState.descripcion = e.target.value;
+        setForm(nuevoState);
+    };
+
+    const handleChangeCategoria_id = e => {
+        // e.target.value
+        const nuevoState = JSON.parse(JSON.stringify(form));
+        nuevoState.categoria_id = e.target.value;
+        setForm(nuevoState);
+    };
+
+    const handleChangePersona_id = e => {
+        // e.target.value
+        const nuevoState = JSON.parse(JSON.stringify(form));
+        nuevoState.persona_id = e.target.value;
+        setForm(nuevoState);
+    };
     const traerLibros = async() => {
         try {
             const respuesta = await axios.get('http://localhost:3000/api/libro');
@@ -55,7 +126,7 @@ export default function ListadoLibro() {
             }
         }
     }
-
+    
     return (
         <div className="container">
             <ToastContainer />
@@ -85,13 +156,19 @@ export default function ListadoLibro() {
                                    <Link onClick={() => devolverLibro(unLibro.id.toString())}>Devolver</Link> 
                                    
                                 </td>
-                                <td>{unLibro.categoria_id}</td>
+                                <td>{unLibro.categoria_id}
+                                   
+                                </td>
                                 <td>
                                     <Link to={"/libros/editar/"+ unLibro.id.toString()}>Editar</Link> |&nbsp;
                                     <Link onClick={() => borrarLibro(unLibro.id.toString())}>Borrar</Link>
+                                    
+                                    
                                 </td>
                             </tr>
                         ))}
+                        
+                        
                     </tbody>
                 </table>
             </div>
