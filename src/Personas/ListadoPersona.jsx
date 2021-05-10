@@ -32,7 +32,7 @@ export default function ListadoPersona() {
             toast.success("Realizado!")
             traerPersonas();
         } catch(e) {
-            toast.error(e.message)
+            toast.error(e.response.data.message)
         }
     }
 
