@@ -76,7 +76,7 @@ export default function ListadoLibro() {
                     </tbody>
                 </table>
             </div>
-            <Link to="/" >Home</Link>
+          
         </div>
     )
                     }
