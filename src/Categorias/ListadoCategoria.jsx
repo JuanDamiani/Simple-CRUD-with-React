@@ -18,7 +18,7 @@ export default function ListadoCategoria() {
             if (e.message === 'Network Error') {
                 toast.error("No me pude conectar con el servidor");
             } else {
-                toast.error(e.message);
+                toast.error(e.response.data.message);
             }
         }
     }
@@ -77,7 +77,6 @@ export default function ListadoCategoria() {
                     ))}
                 </tbody>
             </table>
-           
         </div>
         
     )
