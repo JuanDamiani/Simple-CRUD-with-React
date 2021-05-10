@@ -19,7 +19,7 @@ export default function EditarLibro(props) {
             if (e.message === 'Network Error') {
                 toast.error("No me pude conectar con el servidor");
             } else {
-                toast.error(e.message);
+                toast.error(e.response.data.message);
             }
         }
     }
@@ -50,7 +50,7 @@ export default function EditarLibro(props) {
             if (e.message === 'Network Error') {
                 toast.error("No me pude conectar con el servidor");
             } else {
-                toast.error(e.message);
+                toast.error(e.response.data.message);
             }
         }
     }
